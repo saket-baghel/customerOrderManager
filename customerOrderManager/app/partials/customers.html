@@ -1,0 +1,68 @@
+<br /><div class="customers view slideRight">
+    <div class="container">
+        <div class="row">
+            <div class="span3">
+                First Name:
+                <br />
+                <input data-ng-model="newCustomer.firstName" type="text" placeholder="First Name">
+            </div>
+            <div class="span3">
+                Last Name:
+                <br />
+                <input data-ng-model="newCustomer.lastName" type="text" placeholder="Last Name">
+            </div>
+            <div class="span3">
+                City:
+                <br />
+                <input data-ng-model="newCustomer.city" type="text" placeholder="Customer City">
+             
+            </div> </div>  
+            
+            
+            <div class="row">
+                <div class="span3">
+                Ordered Product Name:
+                <br />
+                <input data-ng-model="newCustomer.product" type="text" placeholder="Ordered Product Name">
+            </div>
+            <div class="span3">
+                Product Quantity:
+                <br />
+                <input data-ng-model="newCustomer.quantity" type="text" placeholder="Product Quantity">
+            </div>
+            <div class="span6">
+                Product Price
+                <br />
+                <input data-ng-model="newCustomer.price" type="text" placeholder="Product Price">
+                                      
+                <button id="submitCustomer" class="btn" type="button" style="line-height:200%;" 
+                data-ng-disabled="!newCustomer.firstName || !newCustomer.lastName || !newCustomer.city || !newCustomer.product || !newCustomer.quantity || !newCustomer.price" 
+                    data-ng-click="insertCustomer()"><glyphicon class="icon-plus"></glyphicon> Add Customer
+                </button>
+            </div> </div> 
+            
+
+            
+        
+
+        <br />
+        <header>
+            <h3>Customers</h3>
+        </header>
+        <div>
+            <div class="row cardContainer">
+                <div class="span3 card" data-ng-repeat="customer in customers | orderBy:'firstName'">
+                    <button class="btn close cardClose" data-ng-click="deleteCustomer(customer.id)"><glyphicon class="icon-remove"></glyphicon></button>
+                    <div class="cardHeader">
+                    <a href="#/customerorders/{{customer.id}}">{{ customer.firstName + ' ' + customer.lastName }}</a>
+                    </div>
+                    <div class="cardBody">
+                       <img src="logo.png" height="42" width="42" alt="logo"/>
+                       <span style="color:black;">{{customer.city}}</span>                    
+                       <a href="#/customerorders/{{customer.id}}" class="cardBody btn-link">View {{ customer.orders.length }} Orders</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

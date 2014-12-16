@@ -1,0 +1,15 @@
+    .slideRight{
+    position: relative;
+    width:90%;
+    height:auto;
+    -webkit-animation-name: myfirst;
+    -webkit-animation-duration: 0.5s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-delay: 0s;
+    }
+    
+    @-webkit-keyframes myfirst {
+    0%{right:100%;width:0%; top:auto; opacity:0;}
+    90%{right:10%;width:80%; top:auto; opacity:0.2;}
+    100%{right:0%;width:90%; top:auto; opacity:1;}
+    }

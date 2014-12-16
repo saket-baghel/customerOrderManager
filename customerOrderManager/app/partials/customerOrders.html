@@ -1,0 +1,94 @@
+<div class="customerOrders view slideRight">
+    <div class="container">
+        <header>
+            <h3>Customer Orders</h3>
+        </header>
+        <div>
+            <div class="row">
+                <div>
+                    <div class="indent">
+                        <h4>Orders for {{ customer.firstName + ' ' + customer.lastName }}</h4>
+                        {{customer.address}}
+                        <br />
+                        {{customer.city}}
+                        <br /><br />
+                    </div>
+                    
+                    
+                 <div class="span3">
+                      Ordered Product Name:
+                       <br />
+                     <input data-ng-model="newOrder.product" type="text" placeholder="Ordered Product Name">
+                 </div>
+                 <div class="span3">
+                      Product Quantity:
+                      <br />
+                      <input data-ng-model="newOrder.quantity" type="text" placeholder="Product Quantity">
+                 </div>
+                 <div class="span6">
+                      Product Price
+                      <br />
+                      <input data-ng-model="newOrder.price" type="text" placeholder="Product Price">
+                      
+                      <button id="submitCustomer" class="btn" type="button" style="line-height:200%;" 
+                       data-ng-disabled="!newOrder.product || !newOrder.quantity || !newOrder.price" 
+                       data-ng-click="insertOrder()"><glyphicon class="icon-plus"></glyphicon> Add Order
+                      </button>
+                 </div><br /><br />
+                    
+                    
+                </div>                
+                <br /><br />
+                <div class="span12">
+                                     
+                    
+ <table class="table table-condensed table-bordered ordersTable" data-ng-controller="OrderChildController">
+    <thead>
+        <tr>
+            <th data-ng-click="setOrder('product')">Product</th>
+            <th data-ng-click="setOrder('quantity')">Quantity</th>
+            <th data-ng-click="setOrder('price')">Unit Price</th>
+            <th data-ng-click="setOrder('orderTotal')">Total</th>
+            <th>Delete Order</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr data-ng-hide="customer.orders || customer.orders.length > 0" class="error">
+            <td colspan="4">
+                <div class="text-center"><strong>No orders found</strong></div>
+            </td>
+        </tr>
+        <tr data-ng-repeat="order in customer.orders | orderBy:orderby:reverse" style="background-color:#fafafa;">
+            <td>
+                {{ order.product }}
+            </td>
+            <td>
+                {{ order.quantity }}
+            </td>
+            <td>
+                {{ order.price | currency }}
+            </td>
+            <td>
+                {{ order.orderTotal | currency }}
+            </td>
+            <td>
+                 <button class="btn btn-warning" type="button" style="line-height:80%;" 
+                   data-ng-click="deleteOrder($index)">Delete
+                 </button>
+            </td>
+        </tr>
+
+    </tbody>
+</table>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
